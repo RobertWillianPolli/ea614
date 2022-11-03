@@ -1,30 +1,24 @@
 import matplotlib.pyplot as plt
-from scipy import signal
+from scipy import signal, integrate
 import numpy as np
 
 global tal
-
 wm = 5
-
 tal = (2*np.pi)/wm
+j= complex(0,1)
 
-t = np.linspace(-tal, tal, 100)
+w = np.linspace(0,40,100)
+Xjw = []
 
-x = signal.square(5*t/2+(np.pi/2))
+for omega in w:
+    x_e = lambda t: signal.square(5 * t / 2 + (np.pi / 2)) * np.exp(-j * omega * t)
+    Xjw.append(abs(integrate.quad(x_e, -tal/2, tal/2)[0]))
 
-plt.ylabel("Amplitude")
-plt.xlabel("Tempo (s)")
-plt.plot(t, x)
+stemlines = plt.stem(w, np.array(Xjw), use_line_collection=True)
+plt.setp(stemlines, 'linestyle', 'dotted')
+
+plt.xlabel("Frequência angular (rad/s)")
+plt.ylabel("|Hc(jw)|")
+plt.title("Filtro de Chebyshev - wc = 10 rad/s, n = 3")
+
 plt.show()
-
-fft = np.fft.fft(x)
-T = t[1] - t[0] # 0.001 -> 1/T = 1000
-N = x.size
-f = np.fft.fftfreq(len(x), T)
-frequencias = f[:N // 2]
-amplitudes = np.abs(fft)[:N // 2] * 1 / N
-
-plt.ylabel("Amplitude")
-plt.xlabel("Frequência (Hz)")
-plt.bar(frequencias, amplitudes, width=1.5)
-plt.show()'''
