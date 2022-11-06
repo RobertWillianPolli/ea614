@@ -11,9 +11,6 @@ def Hideal(jw):
     else:
         return(0)
 
-def tranfInv(xjw, w):
-    Xt.append(abs(integrate.quad(xjw * np.exp(-j * omega * t), w[0], w[-1])[0])/(2*np.pi))
-
 wc = 10
 e = 0.9
 n_B = 2
@@ -45,6 +42,20 @@ for index in range(len(Xjw)):
     Yb.append(Xjw[index] * gain[1][index])
     Yc.append(Xjw[index] * gain[2][index])
 
+#=====================================================
+
+plt.figure(1)
+stemlines = plt.stem(w, np.array(Xjw), "b", use_line_collection=True)
+plt.setp(stemlines, 'linestyle', 'dotted')
+
+plt.xlabel("Frequência angular (rad/s)")
+plt.ylabel("|X(jw)|")
+plt.title("Sinal de entrada dos filtros")
+
+plt.show()
+
+#=====================================================
+
 '''plt.figure(1)
 stemlines = plt.stem(w, np.array(gain[0]), "b", use_line_collection=True, label="|Hideal(jw)|")
 plt.setp(stemlines, 'linestyle', 'dotted')
@@ -60,7 +71,9 @@ plt.ylabel("Módulo da resposta em frequência")
 plt.title("Comparação das respostas em frequência")
 
 plt.legend()
-plt.show()'''
+plt.show()
+
+#=====================================================
 
 plt.figure(1)
 stemlines = plt.stem(w, np.array(Yideal), "b", use_line_collection=True, label="Filtro ideal")
@@ -73,9 +86,10 @@ stemlines = plt.stem(w, np.array(Yc), "g", use_line_collection=True, label="Filt
 plt.setp(stemlines, 'linestyle', 'dotted')
 
 plt.xlabel("Frequência angular (rad/s)")
-plt.ylabel("Módulo da resposta em frequência")
-plt.title("Comparação das respostas em frequência")
+plt.ylabel("Módulo da saída")
+plt.title("Comparação das saídas dos filtros")
 
 plt.legend()
 plt.show()
 
+#====================================================='''
