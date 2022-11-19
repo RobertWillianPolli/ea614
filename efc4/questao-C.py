@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import IPython.display as ipd
 from scipy.io import wavfile
 import matplotlib.pyplot as plt
 
@@ -37,8 +38,9 @@ def decimacao(y):
 
 # Fs -  Taxa de amostragem
 
-Fs, y = wavfile.read("creed_overcome.wav")
+#Fs, y = wavfile.read("creed_overcome.wav")
 
-y=(y[:,0]+y[:,1])/2
-decimacao(y)
+#y=(y[:,0]+y[:,1])/2
+#decimacao(y)
 
+ipd.Audio("creed_overcome.wav",rate=44100)
