@@ -34,11 +34,11 @@ def decimacao(y):
 
     espectro(yDec)
 
+if __name__ == "__main__":
+    # Fs -  Taxa de amostragem
 
-# Fs -  Taxa de amostragem
+    Fs, y = wavfile.read("creed_overcome.wav")
 
-Fs, y = wavfile.read("creed_overcome.wav")
-
-y=(y[:,0]+y[:,1])/2
-decimacao(y)
+    y=(y[:,0]+y[:,1])/2
+    decimacao(y)
 
