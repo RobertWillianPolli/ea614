@@ -9,7 +9,7 @@ with open("./EEG.txt", "r") as f:
 freq = np.linspace(0,125,len(eeg))
 
 Y = abs(np.fft.fft(np.array(eeg)))
-
+print(len(Y))
 print("Índice 'k' do maior módulo:", Y[:int(len(Y)/2)].argmax())
 print("Valor da transformada nesse ponto:", Y[:int(len(Y)/2)].max())
 print("Frequência associada ao índice:", freq[Y[:int(len(Y)/2)].argmax()])

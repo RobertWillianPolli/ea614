@@ -11,7 +11,7 @@ def espectro(y, fs):
     # frequencias avaliadas
     w = np.linspace(0, 2 * math.pi, len(Y))
 
-    f = w * fs
+    f = np.linspace(0, fs, len(Y))
 
     # exibe o grafico do espectro
     plt.figure()

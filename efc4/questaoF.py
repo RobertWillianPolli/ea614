@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.io import wavfile
 from questaoD import kaiser
+import IPython.display as ipd
 import matplotlib.pyplot as plt
 
 def espectro(y):
@@ -38,3 +39,5 @@ plt.ylabel('|$Y(e^{j\Omega})$|', fontsize=10)
 
 plt.grid(True)
 plt.show()
+
+ipd.Audio(data=decimacao(y),rate=Fs/6, autoplay=True)

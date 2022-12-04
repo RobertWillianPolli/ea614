@@ -28,3 +28,5 @@ plt.ylabel('|$Y(e^{j\Omega})$|', fontsize=10)
 
 plt.grid(True)
 plt.show()
+
+ipd.Audio(data=filtrado,rate=Fs, autoplay=True)

@@ -41,4 +41,3 @@ if __name__ == "__main__":
 
     y=(y[:,0]+y[:,1])/2
     decimacao(y)
-
