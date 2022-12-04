@@ -6,10 +6,10 @@ with open("./EEG.txt", "r") as f:
 
 #time = np.linspace(0,len(eeg)/250, len(eeg))
 
-freq = np.linspace(0,125,len(eeg))
+freq = np.linspace(0,125,int(len(eeg)/2))
 
 Y = abs(np.fft.fft(np.array(eeg)))
-print(len(Y))
+
 print("Índice 'k' do maior módulo:", Y[:int(len(Y)/2)].argmax())
 print("Valor da transformada nesse ponto:", Y[:int(len(Y)/2)].max())
 print("Frequência associada ao índice:", freq[Y[:int(len(Y)/2)].argmax()])
@@ -17,7 +17,7 @@ print("Frequência associada ao índice:", freq[Y[:int(len(Y)/2)].argmax()])
 plt.figure()
 
 #plt.plot(time, eeg)
-plt.plot(freq, Y)
+plt.plot(freq, Y[:int(len(Y)/2)])
 
 #plt.title("Eletrocardiograma")
 plt.title("Espectro de magnitude do EEG")
